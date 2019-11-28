@@ -8,6 +8,7 @@ export interface IProps{
     questions: Question[];
     onButtonClick(): void; 
     heading: string;
+    page: string;
 }
 
 export interface IState{
@@ -31,6 +32,7 @@ export default class QuestionContainer extends React.Component<IProps,IState> {
         let key = 8;
       return (<div>
           <h2>{this.props.heading}</h2>
+      <p>sivu {this.props.page}/5</p>
             <Table className="table">
                 <thead className="tableHeading">
                 <tr key="0">

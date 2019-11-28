@@ -60,7 +60,8 @@ export default class App extends React.Component<IProps> {
           isImportant: false,
           class: q,
           isChange: isChangeQ,
-          className: this.getClassName(q)
+          className: this.getClassName(q),
+          resultClass: ""
       });
     });
     return questionList;

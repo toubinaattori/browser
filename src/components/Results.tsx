@@ -1,7 +1,8 @@
 import React from 'react';
 import {  Question, QuestionClass } from "../domain";
 import RadarChart from '../lib';
-import ColorBox from './ColorBox'
+import ColorBox from './ColorBox';
+import QuestionList from './QuestionList';
 
 
 export interface IProps{
@@ -64,14 +65,12 @@ export default class Results extends React.Component<IProps,IState> {
     
 
     render() {
-      console.log("vitun paskapää")
           const wellness = this.props.questions.filter(q => q.class === QuestionClass.wellness);
           const community = this.props.questions.filter(q => q.class === QuestionClass.community);
           const jobtasks = this.props.questions.filter(q => q.class === QuestionClass.jobtasks);
           const leadership = this.props.questions.filter(q => q.class === QuestionClass.leadership);
           const development = this.props.questions.filter(q => q.class === QuestionClass.development);
           const questionList: Array<Question[]> = this.orderQuestions(wellness,community,jobtasks,leadership,development);
-          console.log(questionList);
       return (<div>
           <h3>Tulokset</h3>
           <RadarChart
@@ -138,6 +137,13 @@ export default class Results extends React.Component<IProps,IState> {
           <ColorBox name={questionList[2][0].className} color="#f5e907" average={Math.round(this.calculateAverage(questionList[2])*5* 100) /100}/>
           <ColorBox name={questionList[3][0].className} color="#bb07f2" average={Math.round(this.calculateAverage(questionList[3])*5* 100) /100}/>
           <ColorBox name={questionList[4][0].className} color="#3ffc05" average={Math.round(this.calculateAverage(questionList[4])*5* 100) /100}/>
+          </div>
+          <div className="finalResultAnswers" style={{display: "inline-grid"}}>
+            <QuestionList headline={questionList[0][0].class} question = {questionList[0]}/>
+            <QuestionList headline={questionList[1][0].class} question = {questionList[1]}/>
+            <QuestionList headline={questionList[2][0].class} question = {questionList[2]}/>
+            <QuestionList headline={questionList[3][0].class} question = {questionList[3]}/>
+            <QuestionList headline={questionList[4][0].class} question = {questionList[4]}/>
           </div>
             </div>
       );

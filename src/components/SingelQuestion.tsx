@@ -27,7 +27,7 @@ export default class SingleQuestion extends React.Component<IProps> {
             <td className="radioButton"><Input type="radio" name={this.props.question.question} value={3} onChange={this.onButtonChange}/></td>
             <td className="radioButton"><Input type="radio" name={this.props.question.question} value={4} onChange={this.onButtonChange}/></td>
             <td className="radioButton"><Input type="radio" name={this.props.question.question} value={5} onChange={this.onButtonChange}/></td>
-            <td className="radioButton"><Input type="checkbox" onChange={this.onImportantChange}/></td>
+            {!this.props.question.isChange ? <td className="radioButton"><Input type="checkbox" onChange={this.onImportantChange}/></td> : null}
         </tr>);
     }
 

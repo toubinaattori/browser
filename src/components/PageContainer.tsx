@@ -70,11 +70,11 @@ export default class PageContainer extends React.Component<IProps,IState> {
         <div className="quesetionnaireApp">
           {this.state.visible === PageEnum.homepage ? <HomePage onButtonClick = {this.basicInfo}/> : null}
           {this.state.visible === PageEnum.basicInfo ? <BasicInfo onButton = {this.onClick} onButtonClick = {this.selectRole}/> : null}
-          {this.state.visible === PageEnum.jobtasks ? <QuestionContainer heading="Työtehtävät" questions = {this.state.rightQuestions.filter(question => question.class === QuestionClass.jobtasks)} onButtonClick = {this.wellness}/> : null}
-          {this.state.visible === PageEnum.wellness ? <QuestionContainer heading="Hyvinvointi" questions = {this.state.rightQuestions.filter(question => question.class === QuestionClass.wellness)} onButtonClick = {this.development}/> : null}
-          {this.state.visible === PageEnum.development ? <QuestionContainer heading="Kehitys" questions = {this.state.rightQuestions.filter(question => question.class === QuestionClass.development)} onButtonClick = {this.community}/> : null}
-          {this.state.visible === PageEnum.community ? <QuestionContainer heading="Yhteisö" questions = {this.state.rightQuestions.filter(question => question.class === QuestionClass.community)} onButtonClick = {this.leadership}/> : null}
-          {this.state.visible === PageEnum.leadership ? <QuestionContainer heading="Johtajuus" questions = {this.state.rightQuestions.filter(question => question.class === QuestionClass.leadership)} onButtonClick = {this.results}/> : null}
+          {this.state.visible === PageEnum.jobtasks ? <QuestionContainer page="1" heading="Työtehtävät" questions = {this.state.rightQuestions.filter(question => question.class === QuestionClass.jobtasks)} onButtonClick = {this.wellness}/> : null}
+          {this.state.visible === PageEnum.wellness ? <QuestionContainer page="2" heading="Työyvinvointi" questions = {this.state.rightQuestions.filter(question => question.class === QuestionClass.wellness)} onButtonClick = {this.development}/> : null}
+          {this.state.visible === PageEnum.development ? <QuestionContainer page="3" heading="Työssä Kehittyminen" questions = {this.state.rightQuestions.filter(question => question.class === QuestionClass.development)} onButtonClick = {this.community}/> : null}
+          {this.state.visible === PageEnum.community ? <QuestionContainer page="4" heading="Työyhteisö" questions = {this.state.rightQuestions.filter(question => question.class === QuestionClass.community)} onButtonClick = {this.leadership}/> : null}
+          {this.state.visible === PageEnum.leadership ? <QuestionContainer page="5" heading="Johtajuus" questions = {this.state.rightQuestions.filter(question => question.class === QuestionClass.leadership)} onButtonClick = {this.results}/> : null}
           {this.state.visible === PageEnum.results ? <Results questions = {this.state.rightQuestions}/> : null}
         </div>
       );

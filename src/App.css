@@ -61,3 +61,29 @@
   display: inline-block;
   margin-right: 20px;
 }
+
+.finalResultsTable{
+  text-align:left;
+  margin-left: 20px;
+}
+
+.finalResultHeading{
+  text-align : left;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 20px;
+}
+
+
+.finalResultsTableQuestion{
+  padding-left: 10px;
+  padding-right: 20px;
+}
+
+.oddResultTableElement{
+  background-color: gainsboro;
+}
+
+.evenResultTableElement{
+  background-color: white;
+}

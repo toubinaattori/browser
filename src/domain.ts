@@ -8,6 +8,7 @@ export interface Question {
     class: QuestionClass;
     className: string;
     isChange: boolean;
+    resultClass: string;
 }
 
 export interface Questions{
