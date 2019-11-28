@@ -1,0 +1,63 @@
+.quesetionnaireApp {
+  text-align: center;
+  margin-top: 5px;
+}
+
+.Question{
+  margin-top: 5px;
+}
+
+
+.tableHeading{
+  font-family: serif;
+}
+
+.table{
+  font-family: serif;
+}
+
+
+.BasicInfo{
+  width: 50%;
+  margin:auto;
+}
+
+.radioButton{
+  text-align: right;
+    padding-right: 0.3em;
+}
+
+.chart{
+  width: 50%;
+  height: 50%;
+  margin: auto;
+}
+
+.tableHeading{
+  border:none;
+}
+
+.heading{
+  padding: 18px;
+}
+
+.colorBoxColor{
+  margin: 20px;
+  padding: 10px;
+  padding-bottom: 0%;
+  padding-top: 0%;
+}
+
+.colorBox{
+  text-align: left;
+}
+
+.colorBoxContainer{
+  margin-left: 35%;
+}
+
+.colorBoxName{
+  width: 20%;
+  display: inline-block;
+  margin-right: 20px;
+}
