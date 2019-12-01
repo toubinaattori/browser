@@ -27,6 +27,16 @@
     padding-right: 0.3em;
 }
 
+.checkBoxZero{
+  display: none;
+}
+
+.threeNotSelectedAlert{
+  background-color: lightcoral;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
 .chart{
   width: 50%;
   height: 50%;

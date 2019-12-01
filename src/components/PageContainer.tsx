@@ -15,6 +15,7 @@ export interface IProps{
 export interface IState{
     visible: PageEnum;
     rightQuestions: Question[];
+    role: string;
 }
 
 export default class PageContainer extends React.Component<IProps,IState> {
@@ -23,7 +24,8 @@ export default class PageContainer extends React.Component<IProps,IState> {
         super(props);
         this.state = {
             visible: PageEnum.homepage,
-            rightQuestions: props.questions.manager
+            rightQuestions: props.questions.manager,
+            role: "Esimies"
         };
     }
 
@@ -57,10 +59,10 @@ export default class PageContainer extends React.Component<IProps,IState> {
 
     selectRole = (role: RoleEnum): void =>{
         if(role === RoleEnum.manager){
-            this.setState({rightQuestions: this.props.questions.manager});
+            this.setState({rightQuestions: this.props.questions.manager, role: "Esimies"});
         }
         else{
-            this.setState({rightQuestions: this.props.questions.employer});
+            this.setState({rightQuestions: this.props.questions.employer, role: "Työntekijä"});
         }
     }
 
@@ -70,11 +72,11 @@ export default class PageContainer extends React.Component<IProps,IState> {
         <div className="quesetionnaireApp">
           {this.state.visible === PageEnum.homepage ? <HomePage onButtonClick = {this.basicInfo}/> : null}
           {this.state.visible === PageEnum.basicInfo ? <BasicInfo onButton = {this.onClick} onButtonClick = {this.selectRole}/> : null}
-          {this.state.visible === PageEnum.jobtasks ? <QuestionContainer page="1" heading="Työtehtävät" questions = {this.state.rightQuestions.filter(question => question.class === QuestionClass.jobtasks)} onButtonClick = {this.wellness}/> : null}
-          {this.state.visible === PageEnum.wellness ? <QuestionContainer page="2" heading="Työyvinvointi" questions = {this.state.rightQuestions.filter(question => question.class === QuestionClass.wellness)} onButtonClick = {this.development}/> : null}
-          {this.state.visible === PageEnum.development ? <QuestionContainer page="3" heading="Työssä Kehittyminen" questions = {this.state.rightQuestions.filter(question => question.class === QuestionClass.development)} onButtonClick = {this.community}/> : null}
-          {this.state.visible === PageEnum.community ? <QuestionContainer page="4" heading="Työyhteisö" questions = {this.state.rightQuestions.filter(question => question.class === QuestionClass.community)} onButtonClick = {this.leadership}/> : null}
-          {this.state.visible === PageEnum.leadership ? <QuestionContainer page="5" heading="Johtajuus" questions = {this.state.rightQuestions.filter(question => question.class === QuestionClass.leadership)} onButtonClick = {this.results}/> : null}
+          {this.state.visible === PageEnum.jobtasks ? <QuestionContainer page="1" role={this.state.role} heading="Työtehtävät" questions = {this.state.rightQuestions.filter(question => question.class === QuestionClass.jobtasks)} onButtonClick = {this.wellness}/> : null}
+          {this.state.visible === PageEnum.wellness ? <QuestionContainer page="2" role={this.state.role} heading="Työyvinvointi" questions = {this.state.rightQuestions.filter(question => question.class === QuestionClass.wellness)} onButtonClick = {this.development}/> : null}
+          {this.state.visible === PageEnum.development ? <QuestionContainer page="3" role={this.state.role} heading="Työssä Kehittyminen" questions = {this.state.rightQuestions.filter(question => question.class === QuestionClass.development)} onButtonClick = {this.community}/> : null}
+          {this.state.visible === PageEnum.community ? <QuestionContainer page="4" role={this.state.role} heading="Työyhteisö" questions = {this.state.rightQuestions.filter(question => question.class === QuestionClass.community)} onButtonClick = {this.leadership}/> : null}
+          {this.state.visible === PageEnum.leadership ? <QuestionContainer page="5" role={this.state.role} heading="Johtajuus" questions = {this.state.rightQuestions.filter(question => question.class === QuestionClass.leadership)} onButtonClick = {this.results}/> : null}
           {this.state.visible === PageEnum.results ? <Results questions = {this.state.rightQuestions}/> : null}
         </div>
       );

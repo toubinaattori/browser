@@ -7,7 +7,7 @@ module.exports = {
     main: './src/index.tsx'
   },
   output: {
-    path: path.join(__dirname, 'dist/d/'),
+    path: path.join(__dirname, 'dist/'),
     filename: '[name].bundle.js',
   },
   watch: true,
@@ -15,7 +15,7 @@ module.exports = {
     extensions: ['.ts', '.tsx', '.js']
   },
   devServer: {
-    contentBase: path.join(__dirname, '../dist/d/'),
+    contentBase: path.join(__dirname, '../dist/'),
     port: 2222
   },
   devtool: 'inline-source-map',
@@ -43,7 +43,7 @@ module.exports = {
       filename: 'index.html',
       showErrors: true,
       title: 'React-TS-Webpack App',
-      path: path.join(__dirname, '../dist/d/'),
+      path: path.join(__dirname, '../dist/'),
       hash: true
     })
   ]

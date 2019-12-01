@@ -9,6 +9,7 @@ export interface IProps{
     onButtonClick(): void; 
     heading: string;
     page: string;
+    role: string;
 }
 
 export interface IState{
@@ -33,8 +34,9 @@ export default class QuestionContainer extends React.Component<IProps,IState> {
       return (<div>
           <h2>{this.props.heading}</h2>
       <p>sivu {this.props.page}/5</p>
+    <p>{this.props.role}</p>
             <Table className="table">
-                <thead className="tableHeading">
+                <tbody className="tableHeading">
                 <tr key="0">
                     <th key="1"></th>
                     <th key="2">1</th>
@@ -43,15 +45,13 @@ export default class QuestionContainer extends React.Component<IProps,IState> {
                     <th key="5">4</th>
                     <th key="6">5</th>
                     <th key="7">3 tärkeää</th>
-                </tr>
-                </thead>
-                <tbody>{this.props.questions.map(element => {
+                </tr>{this.props.questions.map(element => {
                     key = key +1;
                     return(<SingleQuestion keyValue={key} question={element} importantQuestionFunc = {this.importantChanged}/>)})}
                 </tbody>
             </Table>
             {this.props.questions.filter(question => question.isImportant).length === 3 ? <Button onClick={this.props.onButtonClick}>Seuraava sivu</Button> : 
-            <Alert>Sinulla on väärä määrä tärkeitä kysymyksiä valittuna</Alert>}
+            <p className="threeNotSelectedAlert">Sinulla on väärä määrä tärkeitä kysymyksiä valittuna</p>}
             </div>
       );
     }
