@@ -10,6 +10,7 @@ export interface IProps{
     heading: string;
     page: string;
     role: string;
+    previous(): void;
 }
 
 export interface IState{
@@ -36,9 +37,10 @@ export default class QuestionContainer extends React.Component<IProps,IState> {
       <p>sivu {this.props.page}/5</p>
     <p>{this.props.role}</p>
             <Table className="table">
+                <Button onClick={this.props.previous} className="previousButton">edellinen</Button>
                 <tbody className="tableHeading">
                 <tr key="0">
-                    <th key="1"></th>
+                    <th key="1"> 1 = eri mieltä    5 =  samaa mieltä</th>
                     <th key="2">1</th>
                     <th key="3">2</th>
                     <th key="4">3</th>
@@ -50,8 +52,8 @@ export default class QuestionContainer extends React.Component<IProps,IState> {
                     return(<SingleQuestion keyValue={key} question={element} importantQuestionFunc = {this.importantChanged}/>)})}
                 </tbody>
             </Table>
-            {this.props.questions.filter(question => question.isImportant).length === 3 ? <Button onClick={this.props.onButtonClick}>Seuraava sivu</Button> : 
-            <p className="threeNotSelectedAlert">Sinulla on väärä määrä tärkeitä kysymyksiä valittuna</p>}
+            {(this.props.questions.filter(question => question.isImportant).length === 3 && this.props.questions.findIndex(e => e.answer === 0)===-1) ? <Button onClick={this.props.onButtonClick}>Seuraava sivu</Button> : 
+            <p className="threeNotSelectedAlert">Et ole vastannut vielä kaikkiin kysymyksiin tai sinulla on väärä määrä tärkeitä kysymyksiä valittuna</p>}
             </div>
       );
     }

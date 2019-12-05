@@ -11,7 +11,7 @@ export default class HomePage extends React.Component<IProps> {
       return (
         <div className="App">
           <Jumbotron>
-        <h1 className="display-3">Työnohjaustesti</h1>
+        <h1 className="display-3">Mittari työnohjaustarpeen arvioimiseen</h1>
         <hr className="my-2" />
         <p>Tervetuloa täyttämään työnohjauskyselyä, jolla voit selvittää <a href='http://tunnemielesi.fi/1_2_ty-nohjaus-ja-konsultointi.html'>työnohjauksen</a> tarvetta omassa työssäsi. Työnohjauskyselyä voi käyttää myös työnohjauksen tavoitekeskustelussa työnohjaajan kanssa sekä sen avulla voit myös seurata työnohjausprosessin vaikuttavuutta.</p> 
         <p>Kyselyssä on viisi osiota, joissa kysytään asioita, joihin työnohjauksella voidaan vaikuttaa. </p> 

@@ -97,3 +97,13 @@
 .evenResultTableElement{
   background-color: white;
 }
+
+.resultExplanations{
+  margin: 40px 40px 40px 40px;
+}
+
+.previousButton{
+    margin-bottom: 10px;
+    float: left;
+    margin-left: 20px;
+}

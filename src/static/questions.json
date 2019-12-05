@@ -32,7 +32,7 @@
         "Saan riittävästi palautetta työsuorituksistani",
         "Osaan ottaa vastaan palautetta",
         "Pystyn itse arvioimaan omaa työsuoritustani",
-        "Kehittymismahdollisuuteni ovat parantuneet"],
+        "Kehittymismahdollisuuteni ovat parantuneet viime aikoina"],
     "community":  ["Työyhteisössäni työnjako toimii hyvin",
         "Tiedän riittävästi, mitä työkaverini tekevät",
         "Koen oloni työyhteisössä turvalliseksi",
@@ -45,7 +45,7 @@
         "Työyhteisöni osaa palkita onnistumisista",
         "Työyhteisössäni on hyvä sisäinen luottamus",
         "Työyhteisöni sallii myös virheet",
-        "Työyhteisöni tila on menossa parempaan suuntaan"],
+        "Työyhteisöni tila on mennyt parempaan suuntaan viime aikoina"],
     "leadership": ["Minun on helppo puhua työasioista esimieheni kanssa",
         "Esimieheni on riittävän hyvin tavoitettavissa",
         "Esimieheni osaa tehtävänsä",
@@ -56,7 +56,7 @@
         "Olen saanut vaikuttaa riittävästi muutoksiin",
         "Muutoksiin on ollut riittävästi aikaa",
         "Tapahtuneet muutokset on johdettu riittävän hyvin ",
-        "Johtajuus on kehittynyt/parantunut"]
+        "Johtajuus on kehittynyt/parantunut viime aikoina"]
     },
     "manager": {
         "wellness":["Fyysinen hyvinvointini tukee minua työssäni",
@@ -95,7 +95,7 @@
             "Pystyn itse arvioimaan omaa työsuoritustani",
             "Osaan ottaa vastaan palautetta",
             "Osaan antaa palautetta",
-            "Kehittymismahdollisuuteni ovat parantuneet"],
+            "Kehittymismahdollisuuteni ovat parantuneet viime aikoina"],
         "community":  ["Työyhteisössäni työnjako toimii hyvin",
             "Työyhteisöni on määritellyt riittävän hyvin strategiansa",
             "Tiedän riittävästi, mitä työkaverini tekevät",
@@ -110,7 +110,7 @@
             "Työyhteisöni osaa palkita onnistumisista",
             "Työyhteisössäni on hyvä sisäinen luottamus",
             "Työyhteisöni sallii myös virheet",
-            "Työyhteisöni tila on menossa parempaan suuntaan"],
+            "Työyhteisöni tila on mennyt parempaan suuntaan viime aikoina"],
         "leadership": ["Minun on helppo puhua työasioista esimieheni kanssa",
             "Esimieheni on riittävän hyvin tavoitettavissa",
             "Esimieheni osaa tehtävänsä",
@@ -121,7 +121,7 @@
             "Olen saanut vaikuttaa riittävästi muutoksiin",
             "Muutoksiin on ollut riittävästi aikaa",
             "Tapahtuneet muutokset on johdettu riittävän hyvin ",
-            "Johtajuus on kehittynyt/parantunut"]
+            "Johtajuus on kehittynyt/parantunut viime aikoina"]
     }
 
 }

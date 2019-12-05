@@ -49,6 +49,10 @@ export default class PageContainer extends React.Component<IProps,IState> {
         this.setState({visible: PageEnum.development});
     }
 
+    jobtasks = (): void => {
+      this.setState({visible: PageEnum.jobtasks});
+  }
+
     community = (): void => {
         this.setState({visible: PageEnum.community});
     }
@@ -56,6 +60,10 @@ export default class PageContainer extends React.Component<IProps,IState> {
     results = (): void => {
         this.setState({visible: PageEnum.results});
     }
+
+    basicinfo = (): void => {
+      this.setState({visible: PageEnum.basicInfo});
+  }
 
     selectRole = (role: RoleEnum): void =>{
         if(role === RoleEnum.manager){
@@ -72,11 +80,11 @@ export default class PageContainer extends React.Component<IProps,IState> {
         <div className="quesetionnaireApp">
           {this.state.visible === PageEnum.homepage ? <HomePage onButtonClick = {this.basicInfo}/> : null}
           {this.state.visible === PageEnum.basicInfo ? <BasicInfo onButton = {this.onClick} onButtonClick = {this.selectRole}/> : null}
-          {this.state.visible === PageEnum.jobtasks ? <QuestionContainer page="1" role={this.state.role} heading="Työtehtävät" questions = {this.state.rightQuestions.filter(question => question.class === QuestionClass.jobtasks)} onButtonClick = {this.wellness}/> : null}
-          {this.state.visible === PageEnum.wellness ? <QuestionContainer page="2" role={this.state.role} heading="Työyvinvointi" questions = {this.state.rightQuestions.filter(question => question.class === QuestionClass.wellness)} onButtonClick = {this.development}/> : null}
-          {this.state.visible === PageEnum.development ? <QuestionContainer page="3" role={this.state.role} heading="Työssä Kehittyminen" questions = {this.state.rightQuestions.filter(question => question.class === QuestionClass.development)} onButtonClick = {this.community}/> : null}
-          {this.state.visible === PageEnum.community ? <QuestionContainer page="4" role={this.state.role} heading="Työyhteisö" questions = {this.state.rightQuestions.filter(question => question.class === QuestionClass.community)} onButtonClick = {this.leadership}/> : null}
-          {this.state.visible === PageEnum.leadership ? <QuestionContainer page="5" role={this.state.role} heading="Johtajuus" questions = {this.state.rightQuestions.filter(question => question.class === QuestionClass.leadership)} onButtonClick = {this.results}/> : null}
+          {this.state.visible === PageEnum.jobtasks ? <QuestionContainer page="1" previous={this.basicInfo} role={this.state.role} heading="Työtehtävät" questions = {this.state.rightQuestions.filter(question => question.class === QuestionClass.jobtasks)} onButtonClick = {this.wellness}/> : null}
+          {this.state.visible === PageEnum.wellness ? <QuestionContainer page="2" previous={this.jobtasks} role={this.state.role} heading="Työyvinvointi" questions = {this.state.rightQuestions.filter(question => question.class === QuestionClass.wellness)} onButtonClick = {this.development}/> : null}
+          {this.state.visible === PageEnum.development ? <QuestionContainer page="3" previous={this.wellness} role={this.state.role} heading="Työssä Kehittyminen" questions = {this.state.rightQuestions.filter(question => question.class === QuestionClass.development)} onButtonClick = {this.community}/> : null}
+          {this.state.visible === PageEnum.community ? <QuestionContainer page="4" previous={this.development} role={this.state.role} heading="Työyhteisö" questions = {this.state.rightQuestions.filter(question => question.class === QuestionClass.community)} onButtonClick = {this.leadership}/> : null}
+          {this.state.visible === PageEnum.leadership ? <QuestionContainer page="5" previous={this.community} role={this.state.role} heading="Johtajuus" questions = {this.state.rightQuestions.filter(question => question.class === QuestionClass.leadership)} onButtonClick = {this.results}/> : null}
           {this.state.visible === PageEnum.results ? <Results questions = {this.state.rightQuestions}/> : null}
         </div>
       );
