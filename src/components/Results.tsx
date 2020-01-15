@@ -79,29 +79,29 @@ export default class Results extends React.Component<IProps,IState> {
 
 
     pdf(){
-      const input = document.getElementById('resultPdf') as HTMLElement;
-      const divHeight = input.clientHeight;
-      const divWidth = input.clientWidth;
-      const ratio = divHeight / divWidth;
-      html2canvas(input)
-        .then((canvas) => {
-          let imgData = canvas.toDataURL('image/png');
-          let imgWidth = 210; 
-          let pageHeight = 295;  
-          let imgHeight = canvas.height * imgWidth / canvas.width;
-          let heightLeft = imgHeight;
-          let doc = new jsPDF('p', 'mm');
-          let position = 0;
-          doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
-          heightLeft -= pageHeight;
-          while (heightLeft >= 0) {
-            position = heightLeft - imgHeight;
-            doc.addPage();
-            doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
-            heightLeft -= pageHeight;
-          }
-          doc.save( 'file.pdf');
-        });
+      var doc = new jsPDF()
+      var counter = 0;
+      this.props.questions.filter(q => q.class === QuestionClass.wellness).forEach(q =>{
+        counter = counter + 10
+        doc.text(q.question + ": "+q.answer, 10, counter);
+      });
+      this.props.questions.filter(q => q.class === QuestionClass.community).forEach(q =>{
+        counter = counter + 10
+        doc.text(q.question + ": "+q.answer, 10, counter);
+      });
+      this.props.questions.filter(q => q.class === QuestionClass.jobtasks).forEach(q =>{
+        counter = counter + 10
+        doc.text(q.question + ": "+q.answer, 10, counter);
+      });
+      this.props.questions.filter(q => q.class === QuestionClass.leadership).forEach(q =>{
+        counter = counter + 10
+        doc.text(q.question + ": "+q.answer, 10, counter);
+      });
+      this.props.questions.filter(q => q.class === QuestionClass.development).forEach(q =>{
+        counter = counter + 10
+        doc.text(q.question + ": "+q.answer, 10, counter);
+      });
+      doc.save('results.pdf')  
     }
 
     toggle() {
@@ -121,7 +121,6 @@ export default class Results extends React.Component<IProps,IState> {
       return (<div>
           <p>Tulokset</p>
           <Button onClick={this.pdf}>Lataa PDF</Button>
-          <div id="resultPdf">
           <RadarChart
             captions={{
               // columns
@@ -180,6 +179,7 @@ export default class Results extends React.Component<IProps,IState> {
             ]}
             size={500}
           />
+          <div id="resultPdf">
           <h4>Värien selitykset ja keskiarvot</h4>
           <div className="colorBoxContainer">
           <ColorBox name={questionList[0][0].className} color="#58FCEC" average={Math.round(this.calculateAverage(questionList[0])*5* 100) /100}/>
