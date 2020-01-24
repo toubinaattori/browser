@@ -4,8 +4,8 @@ import RadarChart from '../lib';
 import ColorBox from './ColorBox';
 import QuestionList from './QuestionList';
 import { Button, Tooltip, Jumbotron } from 'reactstrap';
-import html2canvas from 'html2canvas';
-import jsPDF from 'jspdf';
+const jsPDF = require('jspdf');
+require('jspdf-autotable');
 
 
 export interface IProps{
@@ -77,31 +77,83 @@ export default class Results extends React.Component<IProps,IState> {
         return array;
     }
 
+    getImgFromUrl() {
+      var img = new Image();
+      img.src = '../static/logo2017.png';
+      img.onload = (function (results: Results) {
+        return function() {
+          results.pdf(img);
+        }
+      })(this);
+  } 
 
-    pdf(){
+
+    pdf(image: HTMLElement){
       var doc = new jsPDF()
-      var counter = 0;
+      doc.setFontSize(22);
+      doc.text(40, 20, 'Mittari työnohjaustarpeen arvioimiseen');
+      doc.setFontSize(18);
+      let columns = [{title: "Työhyvinvointi", dataKey: "q"},{title: "", dataKey: "answer"}];
+      var rowswell: any = [];
       this.props.questions.filter(q => q.class === QuestionClass.wellness).forEach(q =>{
-        counter = counter + 10
-        doc.text(q.question + ": "+q.answer, 10, counter);
+        rowswell.push({"q":q.question,"answer":q.answer});
       });
-      this.props.questions.filter(q => q.class === QuestionClass.community).forEach(q =>{
-        counter = counter + 10
-        doc.text(q.question + ": "+q.answer, 10, counter);
-      });
-      this.props.questions.filter(q => q.class === QuestionClass.jobtasks).forEach(q =>{
-        counter = counter + 10
-        doc.text(q.question + ": "+q.answer, 10, counter);
-      });
-      this.props.questions.filter(q => q.class === QuestionClass.leadership).forEach(q =>{
-        counter = counter + 10
-        doc.text(q.question + ": "+q.answer, 10, counter);
-      });
-      this.props.questions.filter(q => q.class === QuestionClass.development).forEach(q =>{
-        counter = counter + 10
-        doc.text(q.question + ": "+q.answer, 10, counter);
-      });
-      doc.save('results.pdf')  
+      doc.autoTable(columns, rowswell, {
+        styles: {fillColor: [178, 178, 178]},
+        columnStyles: {
+          id: {fillColor: 255}
+        },
+        margin: {top: 30},
+    });
+    let columns1 = [{title: "Työssä Kehittyminen", dataKey: "q"},{title: "", dataKey: "answer"}];
+    var rowsdev: any = [];
+    this.props.questions.filter(q => q.class === QuestionClass.development).forEach(q =>{
+      rowsdev.push({"q":q.question,"answer":q.answer});
+    });
+    doc.autoTable(columns1, rowsdev, {
+      styles: {fillColor: [178, 178, 178]},
+      columnStyles: {
+        id: {fillColor: 255}
+      },
+      margin: {top: 60},
+    });
+    var rowsdlead: any = [];
+    let columns2 = [{title: "Johtajuus", dataKey: "q"},{title: "", dataKey: "answer"}];
+    this.props.questions.filter(q => q.class === QuestionClass.leadership).forEach(q =>{
+      rowsdlead.push({"q":q.question,"answer":q.answer});
+    });
+    doc.autoTable(columns2, rowsdlead, {
+      styles: {fillColor: [178, 178, 178]},
+      columnStyles: {
+        id: {fillColor: 255}
+      },
+      margin: {top: 10},
+    });
+    let columns3 = [{title: "Työtehtävät", dataKey: "q"},{title: "", dataKey: "answer"}];
+    var rowsjob: any = [];
+    this.props.questions.filter(q => q.class === QuestionClass.jobtasks).forEach(q =>{
+      rowsjob.push({"q":q.question,"answer":q.answer});
+    });
+    doc.autoTable(columns3, rowsjob, {
+      styles: {fillColor: [178, 178, 178]},
+      columnStyles: {
+        id: {fillColor: 255}
+      },
+      margin: {top: 10},
+    });
+    var rowsdcom: any = [];
+    let columns4 = [{title: "Työyhteisö", dataKey: "q"},{title: "", dataKey: "answer"}];
+    this.props.questions.filter(q => q.class === QuestionClass.community).forEach(q =>{
+      rowsdcom.push({"q":q.question,"answer":q.answer});
+    });
+    doc.autoTable(columns4, rowsdcom, {
+      styles: {fillColor: [178, 178, 178]},
+      columnStyles: {
+        id: {fillColor: 255}
+      },
+      margin: {top: 10},
+    });
+      doc.save('tulokset.pdf')  
     }
 
     toggle() {
@@ -120,7 +172,7 @@ export default class Results extends React.Component<IProps,IState> {
           const questionList: Array<Question[]> = this.orderQuestions(wellness,community,jobtasks,leadership,development);
       return (<div>
           <p>Tulokset</p>
-          <Button onClick={this.pdf}>Lataa PDF</Button>
+          <Button onClick={this.getImgFromUrl}>Lataa PDF</Button>
           <RadarChart
             captions={{
               // columns

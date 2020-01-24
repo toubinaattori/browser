@@ -52,7 +52,7 @@ export default class QuestionContainer extends React.Component<IProps,IState> {
                     return(<SingleQuestion keyValue={key} question={element} importantQuestionFunc = {this.importantChanged}/>)})}
                 </tbody>
             </Table>
-            {(this.props.questions.filter(question => question.isImportant).length === 3 && this.props.questions.findIndex(e => e.answer === 0)===-1) ? <Button onClick={this.props.onButtonClick}>Seuraava sivu</Button> : 
+            {(this.props.questions.filter(question => question.isImportant).length === 3 && /*this.props.questions.findIndex(e => e.answer === 0)*/-1===-1) ? <Button onClick={this.props.onButtonClick}>Seuraava sivu</Button> : 
             <p className="threeNotSelectedAlert">Et ole vastannut vielä kaikkiin kysymyksiin tai sinulla on väärä määrä tärkeitä kysymyksiä valittuna</p>}
             </div>
       );

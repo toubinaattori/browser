@@ -55,7 +55,7 @@ export default class QuestionList extends React.Component<IProps> {
       return (
           <>
             <h3 className="finalResultHeading">{this.getClassName(this.props.headline)}</h3>
-            <table className="finalResultsTable">
+            <table className="finalResultsTable" id={this.props.headline.toString()}>
                 {this.props.question.map(q => {
                     return (
                         <tr className={q.resultClass}>
