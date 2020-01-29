@@ -6,6 +6,7 @@ import QuestionList from './QuestionList';
 import { Button, Tooltip, Jumbotron } from 'reactstrap';
 const jsPDF = require('jspdf');
 require('jspdf-autotable');
+import LogoImg from '../static/logo2017.png';
 
 
 export interface IProps{
@@ -30,7 +31,6 @@ export default class Results extends React.Component<IProps,IState> {
         this.calculateAverage = this.calculateAverage.bind(this);
         this.orderQuestions = this.orderQuestions.bind(this);
         this.pdf = this.pdf.bind(this);
-        this.toggle = this.toggle.bind(this);
         this.state = {
             wellness: 0,
             jobtasks: 0,
@@ -51,12 +51,8 @@ export default class Results extends React.Component<IProps,IState> {
           sd = sd + Math.abs(questions[q].answer - average);
         }
         sd = sd / q;
-        console.log(questions[0].className);
         const maxAv = (questions.length/2 *5 + (questions.length - questions.length/2))/questions.length;
         const maxSd = (questions.length/2 *(5-maxAv) + (maxAv-1)*(questions.length - questions.length/2))/questions.length;
-        console.log(sd);
-        console.log(maxSd);
-        console.log(sd/maxSd);
         return sd/maxSd;
     }
 
@@ -75,24 +71,16 @@ export default class Results extends React.Component<IProps,IState> {
         array.push(q5);
         array.sort((a,b)=>this.calculateAverage(b)-this.calculateAverage(a));
         return array;
-    }
-
-    getImgFromUrl() {
-      var img = new Image();
-      img.src = '../static/logo2017.png';
-      img.onload = (function (results: Results) {
-        return function() {
-          results.pdf(img);
-        }
-      })(this);
-  } 
-
-
-    pdf(image: HTMLElement){
-      var doc = new jsPDF()
-      doc.setFontSize(22);
-      doc.text(40, 20, 'Mittari työnohjaustarpeen arvioimiseen');
-      doc.setFontSize(18);
+      }
+      
+      
+      
+      pdf(): any{
+        var doc = new jsPDF()
+        doc.setFontSize(22);
+        doc.text(15, 20, 'Mittari työnohjaustarpeen arvioimiseen');
+        doc.addImage(LogoImg, 'PNG', 155, 12, 50, 12);
+      doc.setFontSize(14);
       let columns = [{title: "Työhyvinvointi", dataKey: "q"},{title: "", dataKey: "answer"}];
       var rowswell: any = [];
       this.props.questions.filter(q => q.class === QuestionClass.wellness).forEach(q =>{
@@ -155,12 +143,6 @@ export default class Results extends React.Component<IProps,IState> {
     });
       doc.save('tulokset.pdf')  
     }
-
-    toggle() {
-      this.setState({
-        tooltipOpen: !this.state.tooltipOpen
-      });
-    }
     
 
     render() {
@@ -172,7 +154,6 @@ export default class Results extends React.Component<IProps,IState> {
           const questionList: Array<Question[]> = this.orderQuestions(wellness,community,jobtasks,leadership,development);
       return (<div>
           <p>Tulokset</p>
-          <Button onClick={this.getImgFromUrl}>Lataa PDF</Button>
           <RadarChart
             captions={{
               // columns
@@ -248,6 +229,9 @@ export default class Results extends React.Component<IProps,IState> {
             Mikäli keskiarvosi on kolmen tai kahden tienoilla,  mutta hajontasi on korkea, tarkoittaa se sitä, että olit 
             usein täysin eri mieltä ja usein täysin samaa mieltä. Myös tällöin voisit hyötyä työnohjauksesta.
           </Jumbotron>
+          <div>
+          <Button onClick={this.pdf} color="link">Lataa PDF</Button>
+          </div>
           <div className="finalResultAnswers" style={{display: "inline-grid"}}>
             <QuestionList headline={questionList[0][0].class} question = {questionList[0]}/>
             <QuestionList headline={questionList[1][0].class} question = {questionList[1]}/>

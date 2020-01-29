@@ -19,7 +19,7 @@ export default class HomePage extends React.Component<IProps> {
         <p>Tämän lisäksi sinun täytyy jokaisesta osiosta valita 3 itsellesi tärkeintä kysymystä.  </p>
         <p>Kysely ei tallenna tietojasi mihinkään, mutta saat tallennettua lopuksi vastauksesi pdf-muodossa omaan käyttöösi.  </p>
         <p className="lead">
-        <Button onClick={this.props.onButtonClick} >Aloita Kysely</Button>
+        <Button onClick={this.props.onButtonClick} color="link" >Aloita Kysely</Button>
         </p>
       </Jumbotron>
         </div>

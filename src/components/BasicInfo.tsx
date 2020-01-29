@@ -27,7 +27,7 @@ export default class BasicInfo extends React.Component<IProps> {
           </Input>
         </FormGroup>
       </Form>
-          <Button onClick={() =>this.props.onButton(PageEnum.jobtasks)}>Seuraava sivu</Button>
+          <Button onClick={() =>this.props.onButton(PageEnum.jobtasks)} color="link">Seuraava sivu</Button>
         </div>
       );
     }
