@@ -33,9 +33,9 @@ export default class QuestionContainer extends React.Component<IProps,IState> {
     render() {
         let key = 8;
       return (<div>
-          <h2>{this.props.heading}</h2>
-      <p>sivu {this.props.page}/5</p>
-    <p>{this.props.role}</p>
+          <h2 className="questionnaire-page-heading">{this.props.heading}</h2>
+      <p className="jumbotron-paragraph">sivu {this.props.page}/5</p>
+    <p className="jumbotron-paragraph">{this.props.role}</p>
             <Table className="table">
                 <Button onClick={this.props.previous} color="link" className="previousButton">edellinen</Button>
                 <tbody className="tableHeading">

@@ -31,6 +31,15 @@
   display: none;
 }
 
+.jumbotron-paragraph{
+  margin-bottom: 15px;
+}
+
+.questionnaire-page-heading{
+  font-size: 22px;
+  font-weight: bold;
+}
+
 .threeNotSelectedAlert{
   background-color: lightcoral;
   padding-top: 5px;
@@ -60,6 +69,15 @@
 
 .colorBox{
   text-align: left;
+  padding: 5px 0 5px 0;
+}
+
+.colorBoxHeader{
+    font-weight: bold;
+    font-size: 22px;
+    padding: 20px 0 20px 0;
+    text-align: left;
+    margin-left: 20px;
 }
 
 .colorBoxContainer{
@@ -82,12 +100,13 @@
   margin-top: 20px;
   margin-bottom: 20px;
   margin-left: 20px;
+  font-weight: bold;
+  font-size: 18px;
 }
 
 
 .finalResultsTableQuestion{
-  padding-left: 10px;
-  padding-right: 20px;
+  padding: 5px 20px 5px 10px;
 }
 
 .oddResultTableElement{

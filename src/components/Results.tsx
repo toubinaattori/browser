@@ -153,7 +153,7 @@ export default class Results extends React.Component<IProps,IState> {
           const development = this.props.questions.filter(q => q.class === QuestionClass.development);
           const questionList: Array<Question[]> = this.orderQuestions(wellness,community,jobtasks,leadership,development);
       return (<div>
-          <p>Tulokset</p>
+          <h2 className="questionnaire-page-heading">Tulokset</h2>
           <RadarChart
             captions={{
               // columns
@@ -213,8 +213,8 @@ export default class Results extends React.Component<IProps,IState> {
             size={500}
           />
           <div id="resultPdf">
-          <h4>Värien selitykset ja keskiarvot</h4>
           <div className="colorBoxContainer">
+          <div className="colorBoxHeader">Värien selitykset ja keskiarvot</div>
           <ColorBox name={questionList[0][0].className} color="#58FCEC" average={Math.round(this.calculateAverage(questionList[0])*5* 100) /100}/>
           <ColorBox name={questionList[1][0].className} color="#f54542" average={Math.round(this.calculateAverage(questionList[1])*5* 100) /100}/>
           <ColorBox name={questionList[2][0].className} color="#f5e907" average={Math.round(this.calculateAverage(questionList[2])*5* 100) /100}/>
