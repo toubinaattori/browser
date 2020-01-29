@@ -230,7 +230,7 @@ export default class Results extends React.Component<IProps,IState> {
             usein täysin eri mieltä ja usein täysin samaa mieltä. Myös tällöin voisit hyötyä työnohjauksesta.
           </Jumbotron>
           <div>
-          <Button onClick={this.pdf} color="link">Lataa PDF</Button>
+          <Button onClick={this.pdf} color="link" className="questionnaireButton">Lataa PDF</Button>
           </div>
           <div className="finalResultAnswers" style={{display: "inline-grid"}}>
             <QuestionList headline={questionList[0][0].class} question = {questionList[0]}/>
