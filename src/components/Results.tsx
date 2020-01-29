@@ -158,8 +158,8 @@ export default class Results extends React.Component<IProps,IState> {
             captions={{
               // columns
               important: 'Tärkeiden kysymysten keskiarvo',
-              keskiarvo: 'Keskiarvo',
               hajonta: 'Hajonta',
+              keskiarvo: 'Keskiarvo',
               change: 'Muutos'
             }}
             id="resultsRadarChart"
