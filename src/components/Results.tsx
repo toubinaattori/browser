@@ -406,6 +406,7 @@ export default class Results extends React.Component<IProps, IState> {
               onClick={this.pdf}
               color="link"
               className="questionnaireButton"
+              style={{fontSize: 20}}
             >
               Lataa PDF
             </Button>
