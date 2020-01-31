@@ -36,10 +36,11 @@ export default class QuestionContainer extends React.Component<IProps,IState> {
           <h2 className="questionnaire-page-heading">{this.props.heading}</h2>
       <p className="jumbotron-paragraph">sivu {this.props.page}/5</p>
     <p className="jumbotron-paragraph">{this.props.role}</p>
-            <Table className="table">
-                <Button onClick={this.props.previous} color="link" className="previousButton" style={{fontSize: 20}}>edellinen</Button>
-                <tbody className="tableHeading">
-                <tr key="0">
+    <div className="questionnaireTableContainer">
+                <button onClick={this.props.previous} className="previousButton">edellinen</button>
+            <table className="questionnaireTable">
+                <tbody>
+                <tr key="0" className="questionnaireTableHeading">
                     <th key="1"> 1 = eri mieltä    5 =  samaa mieltä</th>
                     <th key="2">1</th>
                     <th key="3">2</th>
@@ -51,8 +52,9 @@ export default class QuestionContainer extends React.Component<IProps,IState> {
                     key = key +1;
                     return(<SingleQuestion keyValue={key} question={element} importantQuestionFunc = {this.importantChanged}/>)})}
                 </tbody>
-            </Table>
-            {(this.props.questions.filter(question => question.isImportant).length === 3 && this.props.questions.findIndex(e => e.answer === 0)) ? <Button onClick={this.props.onButtonClick} color="link" style={{fontSize: 20}}>Seuraava sivu</Button> : 
+            </table>
+            </div>
+            {(this.props.questions.filter(question => question.isImportant).length === 3 /*&& this.props.questions.findIndex(e => e.answer === 0)*/) ? <button onClick={this.props.onButtonClick} className="questionnaireButton">Seuraava sivu</button> : 
             <p className="threeNotSelectedAlert">Et ole vastannut vielä kaikkiin kysymyksiin tai sinulla on väärä määrä tärkeitä kysymyksiä valittuna</p>}
             </div>
       );

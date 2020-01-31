@@ -4,8 +4,12 @@ import RadarChart from "../lib";
 import ColorBox from "./ColorBox";
 import QuestionList from "./QuestionList";
 import { Button, Tooltip, Jumbotron } from "reactstrap";
+import {
+  isMobile
+} from "react-device-detect";
 const jsPDF = require("jspdf");
 require("jspdf-autotable");
+/* eslint-disable import/first */
 import LogoImg from "../static/logo2017.png";
 
 export interface IProps {
@@ -341,7 +345,7 @@ export default class Results extends React.Component<IProps, IState> {
               meta: { color: "#3ffc05" }
             }
           ]}
-          size={500}
+          size={ isMobile ? 300 : 600}
         />
         <div id="resultPdf">
           <div className="colorBoxContainer">
@@ -402,14 +406,12 @@ export default class Results extends React.Component<IProps, IState> {
             hyötyä työnohjauksesta.
           </Jumbotron>
           <div>
-            <Button
+            <button
               onClick={this.pdf}
-              color="link"
               className="questionnaireButton"
-              style={{fontSize: 20}}
             >
               Lataa PDF
-            </Button>
+            </button>
           </div>
           <div
             className="finalResultAnswers"
