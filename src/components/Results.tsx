@@ -273,7 +273,6 @@ export default class Results extends React.Component<IProps, IState> {
           captions={{
             // columns
             important: "Tärkeiden kysymysten keskiarvo",
-            hajonta: "Hajonta",
             keskiarvo: "Keskiarvo",
             change: "Muutos"
           }}
@@ -287,8 +286,7 @@ export default class Results extends React.Component<IProps, IState> {
                 ),
                 change: this.calculateAverage(
                   questionList[0].filter(w => w.isChange)
-                ),
-                hajonta: this.calculateSD(questionList[0])
+                )
               },
               meta: { color: "#58FCEC" }
             },
@@ -300,8 +298,7 @@ export default class Results extends React.Component<IProps, IState> {
                 ),
                 change: this.calculateAverage(
                   questionList[1].filter(w => w.isChange)
-                ),
-                hajonta: this.calculateSD(questionList[1])
+                )
               },
               meta: { color: "#f54542" }
             },
@@ -313,8 +310,7 @@ export default class Results extends React.Component<IProps, IState> {
                 ),
                 change: this.calculateAverage(
                   questionList[2].filter(w => w.isChange)
-                ),
-                hajonta: this.calculateSD(questionList[2])
+                )
               },
               meta: { color: "#f5e907" }
             },
@@ -326,8 +322,7 @@ export default class Results extends React.Component<IProps, IState> {
                 ),
                 change: this.calculateAverage(
                   questionList[3].filter(w => w.isChange)
-                ),
-                hajonta: this.calculateSD(questionList[3])
+                )
               },
               meta: { color: "#bb07f2" }
             },
@@ -339,8 +334,7 @@ export default class Results extends React.Component<IProps, IState> {
                 ),
                 change: this.calculateAverage(
                   questionList[4].filter(w => w.isChange)
-                ),
-                hajonta: this.calculateSD(questionList[4])
+                )
               },
               meta: { color: "#3ffc05" }
             }
@@ -396,14 +390,9 @@ export default class Results extends React.Component<IProps, IState> {
           <Jumbotron className="resultExplanations">
             Kaaviossa on yhteenveto vastauksistasi. Jokaista kyselyn osa-aluetta
             kuvastaa yksi värikoodattu alue. Mitä pienempi kyseisen alueen
-            pinta-ala on, sitä enemmän voisit hyötyä työnohjauksesta. Jokaisesta
-            osa-alueesta on laskettu neljä arvoa: kaikkien vastaustesi
-            keskiarvo, tärkeiden kysymystesi keskiarvo, muutoskysymyksen arvo,
-            sekä vastaustesi hajonta. Kannattaa kiinnittää myös huomiota
-            hajonta-osioon. Mikäli keskiarvosi on kolmen tai kahden tienoilla,
-            mutta hajontasi on korkea, tarkoittaa se sitä, että olit usein
-            täysin eri mieltä ja usein täysin samaa mieltä. Myös tällöin voisit
-            hyötyä työnohjauksesta.
+            pinta-ala on, sitä enemmän voisit hyötyä työnohjauksesta. Kaaviossa näet osa-alueittain
+            kaikkien kysymysten keskiarvon, tärkeiden kysymysten keskiarvon, sekä muutoksen suunnan.
+            Mitä kauempana alueen kulmat ovat keskustasta, sitä parempi.
           </Jumbotron>
           <div>
             <button

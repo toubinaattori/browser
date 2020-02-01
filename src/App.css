@@ -12,6 +12,12 @@
   font-size: 13px;
 }
 
+.infotextQuestionnao{
+padding: 8px;
+border-bottom: 1px solid gray;
+font-size: 18px;
+font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
 
 .questionnaireTableHeading{
   font-family: serif;
